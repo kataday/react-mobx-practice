@@ -9,6 +9,8 @@ useStrict(true);
 import App from './App';
 import AppState from './AppState';
 
+import RouterTest from './RouterTest';
+
 const appState = new AppState();
 
 // 観測(observable)している値が変更されるたびに実行される。
@@ -24,8 +26,14 @@ const tickTimer = action.bound(function() {
 });
 setInterval(tickTimer, 1000);
 
+// ReactDOM.render((
+//   <AppContainer>
+//     <App appState={appState} />
+//   </AppContainer>
+// ), document.getElementById('app'));
+
 ReactDOM.render((
   <AppContainer>
-    <App appState={appState} />
+    <RouterTest />
   </AppContainer>
 ), document.getElementById('app'));
