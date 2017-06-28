@@ -9,13 +9,15 @@ export default class AppState {
   @observable timer2 = 0;
 
   constructor() {
-    // mobx.useStrict(true) の場合、@observableな値の変更は、action~()を通して行う。
-    setInterval(action.bound(() => {
-      this.timer2 += 2;
-    }), 2000);
+    setInterval(this.tickTimer, 2000);
   }
 
-  // mobx.useStrict(true) の場合、@observableな値の変更は、action~()を通して行う。
+  // mobx.useStrict(true) の場合、@observableな値の変更は、action~()を通して行う。関心の分離。
+  @action.bound
+  tickTimer() {
+    this.timer2 += 2;
+  }
+
   @action.bound
   resetTimer() {
     this.timer1 = 0;

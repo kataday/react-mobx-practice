@@ -13,13 +13,16 @@ const appState = new AppState();
 
 // 観測(observable)している値が変更されるたびに実行される。
 autorun(() => {
-  // console.log(appState);
+  // console.log(appState.timer1);
+  // console.log(appState.timer2);
   // whyRun();
 });
 
-setInterval(action.bound(function() {
+// mobx.useStrict(true) の場合、@observableな値の変更は、action~()を通して行う。関心の分離。
+const tickTimer = action.bound(function() {
   appState.timer1 += 1;
-}), 1000);
+});
+setInterval(tickTimer, 1000);
 
 ReactDOM.render((
   <AppContainer>
