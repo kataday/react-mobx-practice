@@ -7,6 +7,13 @@ import {
 export default class AppState {
   @observable timer1 = 0;
   @observable timer2 = 0;
+  sleep = (ms) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({result: 'test'});
+      }, ms);
+    });
+  }
 
   constructor() {
     setInterval(this.tickTimer, 2000);
@@ -22,5 +29,12 @@ export default class AppState {
   resetTimer() {
     this.timer1 = 0;
     this.timer2 = 0;
+  }
+
+  @action.bound
+  async resetTimerAsync() {
+    const result = await this.sleep(5000);
+    console.log(result);
+    this.resetTimer();
   }
 }

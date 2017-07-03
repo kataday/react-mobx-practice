@@ -1,3 +1,7 @@
+// async await
+import "babel-polyfill";
+import "babel-core/register";
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
@@ -26,14 +30,14 @@ const tickTimer = action.bound(function() {
 });
 setInterval(tickTimer, 1000);
 
-// ReactDOM.render((
-//   <AppContainer>
-//     <App appState={appState} />
-//   </AppContainer>
-// ), document.getElementById('app'));
-
 ReactDOM.render((
   <AppContainer>
-    <RouterTest />
+    <App appState={appState} />
   </AppContainer>
 ), document.getElementById('app'));
+
+// ReactDOM.render((
+//   <AppContainer>
+//     <RouterTest />
+//   </AppContainer>
+// ), document.getElementById('app'));

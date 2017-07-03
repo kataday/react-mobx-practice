@@ -13,7 +13,7 @@ export default class App extends Component {
         <button onClick={this.onReset}>
           {this.props.appState.timer1}
         </button>
-        <button onClick={this.onReset}>
+        <button onClick={this.onResetAsync}>
           {this.props.appState.timer2}
         </button>
       </div>
@@ -22,5 +22,9 @@ export default class App extends Component {
 
   onReset = () => {
     this.props.appState.resetTimer();
+  }
+
+  onResetAsync = () => {
+    this.props.appState.resetTimerAsync();
   }
 }
